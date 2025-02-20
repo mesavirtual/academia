@@ -1,7 +1,9 @@
 package com.mesavirtual.academia.service;
 
+import com.mesavirtual.academia.model.Usuario;
 import com.mesavirtual.academia.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,7 +17,13 @@ public class UsuarioService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return usuarioRepository.findByUsername(username)
+        Usuario usuario = usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não enocontrado!"));
+
+        return User.builder()
+                .username(usuario.getUsername())
+                .password(usuario.getPassword())
+                .roles(usuario.getRole())
+                .build();
     }
 }
