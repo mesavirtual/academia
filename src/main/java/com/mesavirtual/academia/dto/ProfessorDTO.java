@@ -1,21 +1,11 @@
-package com.mesavirtual.academia.model;
+package com.mesavirtual.academia.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-public class Professor {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ProfessorDTO {
     private Long id;
     private String nome;
     private String cpf;
     private String especializacao;
-
-    @OneToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
-
-    // Getters e Setters
+    private Long usuarioId;
 
     public Long getId() {
         return id;
@@ -49,11 +39,11 @@ public class Professor {
         this.especializacao = especializacao;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Long getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
     }
 }
