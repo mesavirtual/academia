@@ -1,5 +1,6 @@
 package com.mesavirtual.academia.controller;
 
+import com.mesavirtual.academia.dto.AlunoDTO;
 import com.mesavirtual.academia.model.Aluno;
 import com.mesavirtual.academia.service.AlunoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class AlunoController {
     private AlunoService alunoService;
 
     @GetMapping
-    public List<Aluno> listarAlunos() {
+    public List<AlunoDTO> listarAlunos() {
         return alunoService.listarTodos();
     }
 
@@ -25,7 +26,7 @@ public class AlunoController {
     }
 
     @GetMapping("/{id}")
-    public Aluno buscarAluno(@PathVariable Long id) {
+    public AlunoDTO buscarAluno(@PathVariable Long id) {
         return alunoService.buscarPorId(id);
     }
 
