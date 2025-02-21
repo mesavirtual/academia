@@ -92,6 +92,51 @@
 
 ## 2. Professor
 
+### Listar professores
+* GET http://localhost:8080/treinos
+
+#### Response
+```
+[
+    {
+        "id": 1,
+        "nome": "Carlos Souza",
+        "cpf": "987.654.321-00",
+        "especializacao": "Musculação",
+        "usuarioId": 2
+    },
+    {
+        "id": 2,
+        "nome": "Elza Santos",
+        "cpf": "321.456.788-88",
+        "especializacao": "Ginástica",
+        "usuarioId": null
+    }
+]
+```
+### Cadastrar professor
+* POST http://localhost:8080/professor
+
+#### Body
+```
+{
+    "nome": "Elza Santos",
+    "cpf": "321.456.788-88",
+    "especializacao": "Ginástica"
+}
+```
+
+#### Response
+```
+{
+    "id": 2,
+    "nome": "Elza Santos",
+    "cpf": "321.456.788-88",
+    "especializacao": "Ginástica",
+    "usuarioId": null
+}
+```
+
 ## 3. Treino
 
 ### Cadastrar treino
@@ -107,7 +152,6 @@
     "professorId": 1
 }
 ```
-
 #### Response
 ```
 {
